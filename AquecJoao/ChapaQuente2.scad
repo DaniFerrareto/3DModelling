@@ -12,7 +12,7 @@ chapa2x=23;
 chapa2y=12.5;
 chapa2z=3;
 
-rFuro=2.15/2;
+rFuro=3/2;
 entreFuros=(16.7+22.4)/2;
 
 rPT100=3.15/2;
