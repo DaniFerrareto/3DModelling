@@ -53,6 +53,13 @@ altRpino=17;
 morePino=2;
 maisAltPino=2;
 
+rBorr=20/2;
+altBorr=10;
+
+totalPistola=112;
+filamentEsp=2;
+altPontoQuente=31+8.8/2;
+
 // ----- Main ----- //
 
 difference(){
@@ -80,7 +87,7 @@ difference(){
                 translate([basex-menosAux-haste2x/2-hastefurimx,basey/2-haste2y/2,basez+hastez+rfurao])
                 cube([hastefurimx,hastefurimy,hastefurimz]);
                 #translate([-rfurim+basex-menosAux-haste2x/2,basey/2-haste2y/2,basez+hastez+rfurao])
-                #rotate([-90,0,0]) #cylinder(hastefurimy,rfurim,rfurim,$fn=res);
+                #rotate([-90,0,0])cylinder(hastefurimy,rfurim,rfurim,$fn=res);
             }
         }
     }
@@ -117,16 +124,28 @@ difference(){
 }
 
 // Suporte ao Motor de Passo
-difference(){
-    translate([basex,-(motory-basey)/2,0])cube([motorx,motory,basez]);
-    #translate([basex+eCilMotorxy+rMenorMotorReal,-(motory-basey)/2+eCilMotorxy+rMenorMotorReal,0]){
-        #translate([0,0,0])cylinder(basez,rMenorMotor,rMenorMotor,$fn=res);
-        #translate([0,eCil,0])cylinder(basez,rMenorMotor,rMenorMotor,$fn=res);
-        #translate([eCil,0,0])cylinder(basez,rMenorMotor,rMenorMotor,$fn=res);
-        #translate([eCil,eCil,0])cylinder(basez,rMenorMotor,rMenorMotor,$fn=res);
+translate([0,0,0]){
+    difference(){
+        translate([basex,-(motory-basey)/2,0])cube([motorx,motory,basez]);
+        #translate([basex+eCilMotorxy+rMenorMotorReal,-(motory-basey)/2+eCilMotorxy+rMenorMotorReal,0]){
+            #translate([0,0,0])cylinder(basez,rMenorMotor,rMenorMotor,$fn=res);
+            #translate([0,eCil,0])cylinder(basez,rMenorMotor,rMenorMotor,$fn=res);
+            #translate([eCil,0,0])cylinder(basez,rMenorMotor,rMenorMotor,$fn=res);
+            #translate([eCil,eCil,0])cylinder(basez,rMenorMotor,rMenorMotor,$fn=res);
+        }
+        #translate([basex,-(motory-basey)/2,0])translate([motorx/2,motory/2,0])cylinder(basez,rmotor,rmotor,$fn=res);
     }
-    #translate([basex,-(motory-basey)/2,0])translate([motorx/2,motory/2,0])cylinder(basez,rmotor,rmotor,$fn=res);
 }
+// altura pistola 46.7 ->46.2
+// Borrachas
+translate([0,-rBorr-(filamentEsp/4),0])
+translate([basex,-(motory-basey)/2,0])
+translate([motorx/2,motory/2,basez+altPontoQuente-altBorr/2])
+cylinder(altBorr,rBorr,rBorr,$fn=res);
+translate([0,rBorr+(filamentEsp/4),0])
+translate([basex,-(motory-basey)/2,0])
+translate([motorx/2,motory/2,basez+altPontoQuente-altBorr/2])
+cylinder(altBorr,rBorr,rBorr,$fn=res);
 
 // Pino do Motor de Passo (Apague quando for imprimir)
 difference(){
