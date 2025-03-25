@@ -1,0 +1,28 @@
+aa=13.2;
+rr=1; //raio parafuso fixação offset
+
+difference(){
+    translate([0,0,0])cube([37.55+4,37.55+4,5]);
+    #translate([2,2,-4])cube([37.55,37.55,5]);    
+    #translate([(37.55+4)/2,(37.55+4)/2,-9])cylinder(5+9,6.4/2,6.4/2,$fn=50);
+}
+
+difference(){
+    translate([0,-aa,0])
+        {    
+        translate([0,16.35+5.1/2,10])rotate([0,90,0])cylinder(37.55+4,6.4/2+0.5+2,6.4/2+0.5+2,$fn=100);
+        translate([0,16.35+5.1/2-6.4/2-0.5-2,5])cube([37.55+4,7.4+4,5]);
+        translate([20.7,19,10]) cylinder(10,5,5,$fn=100);        
+        }
+    
+    #translate([0,16.35+5.1/2-aa,10])rotate([0,90,0])cylinder(37.55+4,6.4/2+0.5,6.4/2+0.5,$fn=100);
+    #translate([(37.55+4)/2,(37.55+4)/2-15,10])cylinder(10,rr,rr,$fn=50);    
+};
+
+//(37.55+4)/2 - (16.35+5.1/2-13.2)
+
+
+//translate([20.5,5.3,10]) difference(){
+    //cylinder(10,5,5,$fn=100);    
+//#translate([0,0,-2])cylinder(15,2,2,$fn=50);    
+//};
