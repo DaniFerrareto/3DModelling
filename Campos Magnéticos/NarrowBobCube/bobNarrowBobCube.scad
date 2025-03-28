@@ -37,20 +37,24 @@ translate([0,0,120]){
     // Encaixe Cilíndrico de Sobra
     translate([0,0,encz+espenc-120+70-encz])
     difference(){
-        cylinder(alt+5,rExt+0.5+2*esp,rExt+0.5+2*esp,$fn=res);
+        cylinder(alt+5,rExt+0.2+2*esp,rExt+0.2+2*esp,$fn=res);
         #cylinder(alt+5,rExt+0.5,rExt+0.5,$fn=res);
     }
-    translate([-cubox/2,-(rExt+0.5+2*esp),encz+espenc-120+70-encz+alt])
-    cube([cubox,2*(rExt+0.5+2*esp),-(-120+70-encz)]);
+    translate([-cubox/2,-(rExt+0.2+2*esp),encz+espenc-120+70-encz+alt])
+    cube([cubox,2*(rExt+0.2+2*esp),-(-120+70-encz)]);
 
     // Novo Cubo
     translate([-cubox/2,-cuboy/2,alt+encz+espenc]){
         difference(){
             cube([cubox,cuboy,cuboz]);
-            #translate([esp,esp,4*esp])cube([cubox-2*esp,cuboy-2*esp,cuboz-8*esp]);
+            //#translate([esp,esp,4*esp])cube([cubox-2*esp,cuboy-2*esp,cuboz-8*esp]);
             
-            #translate([esp,2*esp,4*esp])cube([cubox-2*esp,cuboy-2*esp,cuboz-8*esp]);
-            #translate([esp,0,4*esp])cube([cubox-2*esp,cuboy-2*esp,cuboz-8*esp]);
+            //#translate([esp,2*esp,4*esp])cube([cubox-2*esp,cuboy-2*esp,cuboz-8*esp]);
+            //#translate([esp,0,4*esp])cube([cubox-2*esp,cuboy-2*esp,cuboz-8*esp]);
+            #hull(){
+                #translate([esp+(cubox-2*esp)/2,cuboy,4*esp+(cubox-2*esp)/2])rotate([90,0,0])cylinder(cuboy,(cubox-2*esp)/2,(cubox-2*esp)/2,$fn=res);
+                #translate([esp+(cubox-2*esp)/2,cuboy,4*esp-(cubox-2*esp)/2+cuboz-8*esp])rotate([90,0,0])cylinder(cuboy,(cubox-2*esp)/2,(cubox-2*esp)/2,$fn=res);
+            }
             
             #translate([0,cuboy/2,cuboz/2])
             #rotate([0,90,0])
