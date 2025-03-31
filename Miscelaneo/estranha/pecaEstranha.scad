@@ -43,73 +43,83 @@ aux2=(argolasraio*argolasraio)-(aux1*aux1);
 cilinderDepressionOffset=argolasraio-sqrt(aux2);
 cilinderDepressionEncaixe=sqrt(aux1);
 
+cilR=3;
+altR=base1altura+base2altura+base3altura/2;
+cil2R=1.5;
+alt2R=base3altura/4;
+
 use <FusoEstranho.scad>
 translate([0,0,base1altura+base2altura])FusoEstranho();
 // ----- ----- ----- Main ----- ----- ----- //
 
-        
+difference(){ 
 // Bases
-translate([0,0,base1altura+base2altura])cylinder(base3altura,base3raio1,base3raio2,$fn=res);
-translate([0,0,base1altura+base2altura+base3altura])cylinder(base4altura,base4raio1,base4raio2,$fn=res);
-translate([0,0,base1altura+base2altura+base3altura+base4altura])cylinder(base5altura,base5raio,base5raio,$fn=res);
-translate([0,0,base1altura+base2altura+base3altura+base4altura+base5altura])cylinder(base6altura,base6raio,base6raio,$fn=res);
-translate([0,0,base1altura+base2altura+base3altura+base4altura+base5altura+base6altura])cylinder(base7altura,base7raio1,base7raio2,$fn=res);
-
-difference(){
-    translate([0,0,-base0altura])cylinder(base0altura,base0raio,base0raio,$fn=res);
-    #translate([-argolasraio,-entreArgolas/2,-base0altura-2*argolasraio])
-    #cube([2*argolasraio,entreArgolas,base0altura+2*argolasraio]);
+    translate([0,0,0]){
+        translate([0,0,base1altura+base2altura])cylinder(base3altura,base3raio1,base3raio2,$fn=res);
+        translate([0,0,base1altura+base2altura+base3altura])cylinder(base4altura,base4raio1,base4raio2,$fn=res);
+        translate([0,0,base1altura+base2altura+base3altura+base4altura])cylinder(base5altura,base5raio,base5raio,$fn=res);
+        translate([0,0,base1altura+base2altura+base3altura+base4altura+base5altura])cylinder(base6altura,base6raio,base6raio,$fn=res);
+        translate([0,0,base1altura+base2altura+base3altura+base4altura+base5altura+base6altura])cylinder(base7altura,base7raio1,base7raio2,$fn=res);
   
-    #translate([0,-entreArgolas/2-argolasaltura+notargolas1altura,-base0altura-notargolas2raio])
-    #rotate([90,0,0])
-    #cylinder(notargolas1altura,notargolas1raio,notargolas1raio,$fn=res);
-    #translate([0,entreArgolas/2+argolasaltura-notargolas1altura,-base0altura-notargolas2raio])
-    #rotate([-90,0,0])
-    #cylinder(notargolas1altura,notargolas1raio,notargolas1raio,$fn=res);
-    
-    #translate([0,-entreArgolas/2,-base0altura-notargolas2raio])
-    #rotate([90,0,0])
-    #cylinder(notargolas2altura,notargolas2raio,notargolas2raio,$fn=res);
-    #translate([0,entreArgolas/2,-base0altura-notargolas2raio])
-    #rotate([-90,0,0])
-    #cylinder(notargolas2altura,notargolas2raio,notargolas2raio,$fn=res);
-}
+        difference(){
+            translate([0,0,-base0altura])cylinder(base0altura,base0raio,base0raio,$fn=res);
+            #translate([-argolasraio,-entreArgolas/2,-base0altura-2*argolasraio])
+            #cube([2*argolasraio,entreArgolas,base0altura+2*argolasraio]);
+          
+            #translate([0,-entreArgolas/2-argolasaltura+notargolas1altura,-base0altura-notargolas2raio])
+            #rotate([90,0,0])
+            #cylinder(notargolas1altura,notargolas1raio,notargolas1raio,$fn=res);
+            #translate([0,entreArgolas/2+argolasaltura-notargolas1altura,-base0altura-notargolas2raio])
+            #rotate([-90,0,0])
+            #cylinder(notargolas1altura,notargolas1raio,notargolas1raio,$fn=res);
+            
+            #translate([0,-entreArgolas/2,-base0altura-notargolas2raio])
+            #rotate([90,0,0])
+            #cylinder(notargolas2altura,notargolas2raio,notargolas2raio,$fn=res);
+            #translate([0,entreArgolas/2,-base0altura-notargolas2raio])
+            #rotate([-90,0,0])
+            #cylinder(notargolas2altura,notargolas2raio,notargolas2raio,$fn=res);
+        }
 
-difference(){
-    translate([0,0,0]){
-        cylinder(base1altura,base1raio,base1raio,$fn=res);
-        translate([0,0,base1altura])cylinder(base2altura,base2raio,base2raio,$fn=res);
+        difference(){
+            translate([0,0,0]){
+                cylinder(base1altura,base1raio,base1raio,$fn=res);
+                translate([0,0,base1altura])cylinder(base2altura,base2raio,base2raio,$fn=res);
+            }
+            #translate([0,0,-argolasraio])
+            #translate([0,0,cilinderDepressionOffset])
+            #rotate([90,0,0])
+            #cylinder(entreArgolas,argolasraio,argolasraio,$fn=res,center=true);
+        }
+
+        // Argolas
+        difference(){
+            translate([0,0,0]){
+                translate([0,-entreArgolas/2,-base0altura-notargolas2raio])
+                rotate([90,0,0])
+                cylinder(argolasaltura,argolasraio,argolasraio,$fn=res);
+                translate([0,entreArgolas/2,-base0altura-notargolas2raio])
+                rotate([-90,0,0])
+                cylinder(argolasaltura,argolasraio,argolasraio,$fn=res);
+            }
+            
+            #translate([0,-entreArgolas/2-argolasaltura+notargolas1altura,-base0altura-notargolas2raio])
+            #rotate([90,0,0])
+            #cylinder(notargolas1altura,notargolas1raio,notargolas1raio,$fn=res);
+            #translate([0,entreArgolas/2+argolasaltura-notargolas1altura,-base0altura-notargolas2raio])
+            #rotate([-90,0,0])
+            #cylinder(notargolas1altura,notargolas1raio,notargolas1raio,$fn=res);
+            
+            #translate([0,-entreArgolas/2,-base0altura-notargolas2raio])
+            #rotate([90,0,0])
+            #cylinder(notargolas2altura,notargolas2raio,notargolas2raio,$fn=res);
+            #translate([0,entreArgolas/2,-base0altura-notargolas2raio])
+            #rotate([-90,0,0])
+            #cylinder(notargolas2altura,notargolas2raio,notargolas2raio,$fn=res);
+        }
     }
-    #translate([0,0,-argolasraio])
-    #translate([0,0,cilinderDepressionOffset])
-    #rotate([90,0,0])
-    #cylinder(entreArgolas,argolasraio,argolasraio,$fn=res,center=true);
-}
-
-// Argolas
-difference(){
-    translate([0,0,0]){
-        translate([0,-entreArgolas/2,-base0altura-notargolas2raio])
-        rotate([90,0,0])
-        cylinder(argolasaltura,argolasraio,argolasraio,$fn=res);
-        translate([0,entreArgolas/2,-base0altura-notargolas2raio])
-        rotate([-90,0,0])
-        cylinder(argolasaltura,argolasraio,argolasraio,$fn=res);
-    }
     
-    #translate([0,-entreArgolas/2-argolasaltura+notargolas1altura,-base0altura-notargolas2raio])
-    #rotate([90,0,0])
-    #cylinder(notargolas1altura,notargolas1raio,notargolas1raio,$fn=res);
-    #translate([0,entreArgolas/2+argolasaltura-notargolas1altura,-base0altura-notargolas2raio])
-    #rotate([-90,0,0])
-    #cylinder(notargolas1altura,notargolas1raio,notargolas1raio,$fn=res);
-    
-    #translate([0,-entreArgolas/2,-base0altura-notargolas2raio])
-    #rotate([90,0,0])
-    #cylinder(notargolas2altura,notargolas2raio,notargolas2raio,$fn=res);
-    #translate([0,entreArgolas/2,-base0altura-notargolas2raio])
-    #rotate([-90,0,0])
-    #cylinder(notargolas2altura,notargolas2raio,notargolas2raio,$fn=res);
+    #translate([0,0,0])cylinder(altR,cilR,cilR,$fn=res);
+    #translate([0,0,altR])cylinder(alt2R,cil2R,cil2R,$fn=res);
 }
-
 
