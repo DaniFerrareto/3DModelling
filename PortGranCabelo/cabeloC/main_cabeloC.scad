@@ -67,7 +67,7 @@ difference(){
     }
     
     // Reforço Curvo
-    #translate([haste2x-haste3x-haste4x,esp,haste1z+haste2z+haste3z-haste4z-compriObilongo+portaz+compriObilongo-portaz])rotate([90,0,0])cylinder(esp,haste4z,haste4z,$fn=res);
+    //#translate([haste2x-haste3x-haste4x,esp,haste1z+haste2z+haste3z-haste4z-compriObilongo+portaz+compriObilongo-portaz])rotate([90,0,0])cylinder(esp,haste4z,haste4z,$fn=res);
     #translate([haste3x+haste2z,esp,-haste2z+haste1z+haste2z+haste3z])rotate([90,0,0])cylinder(esp,haste2z,haste2z,$fn=res);
     #translate([haste3x+haste3x,esp,haste3x+haste1z+haste2z])rotate([90,0,0])cylinder(esp,haste3x,haste3x,$fn=res);
     
