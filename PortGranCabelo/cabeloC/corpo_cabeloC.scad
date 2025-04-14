@@ -58,7 +58,13 @@ difference(){
         // Reforço Curvo
         translate([haste3x,0,haste1z+haste2z])cube([haste3x,esp,haste3x]);//
         translate([haste3x,0,-haste2z+haste1z+haste2z+haste3z])cube([haste2z,esp,haste2z]);//
-        translate([haste2x-haste3x-haste4x,0,haste1z+haste2z+haste3z-haste4z-compriObilongo+portaz+compriObilongo-portaz])cube([haste4x,esp,haste4z]);//
+        translate([haste2x-haste3x-haste4x,0,haste1z+haste2z+haste3z-haste4z-compriObilongo+portaz])cube([haste4x,esp,haste4z+compriObilongo-portaz+haste4z]);//
+        // Reforço nos Furos Obilongos
+        // Em baixo:
+        translate([haste2x,0,-compriObilongo+haste1z])cube([5,esp,-portaz+haste4z+compriObilongo+haste2z]);
+        // Em cima:
+        translate([haste2x-haste3x+haste4x,0,haste1z+haste2z+haste3z-haste4z-compriObilongo+portaz])cube([5,esp,haste4z+compriObilongo-portaz+haste4z]);
+        translate([haste2x-haste3x-5,0,haste1z+haste2z+haste3z-haste4z-compriObilongo+portaz])cube([5,esp,haste4z+compriObilongo-portaz+haste4z]);
     }
     
     // Reforço Curvo
