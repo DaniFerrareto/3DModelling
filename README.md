@@ -6,3 +6,16 @@ https://github.com/DaniFerrareto/ProjetoIniciacaoCientifica-FAPESP-GeracaoDeCamp
 
 Here are some functions/modules put together in a single .scad file to use it as library for other bigger projects:
 https://github.com/DaniFerrareto/OpenSCAD_Libraries_GFCx
+
+Directories related to FAPESP process:
+- Campos Magnéticos
+- Linear3DStage
+
+Directories adjacent to FAPESP process:
+- EstufaFilamentos3D/AcondiEletEstufa
+- HairProject
+- Sistema de Medidas de Temperatura
+
+Directories not related to FAPESP process:
+- HSPETfilament
+- Miscelaneo
